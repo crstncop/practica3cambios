@@ -151,9 +151,9 @@ class secuencias:
         actual = secuencia[i:i + len(patron)]
 
         if actual.upper() == patron.upper():
-            return 1 + self.contar_patron(secuencia, patron, i + 1)
+            return 1 + self.contar_patron_CAMBIO(secuencia, patron, i + 1)
 
-        return self.contar_patron(secuencia, patron, i + 1)
+        return self.contar_patron_CAMBIO(secuencia, patron, i + 1)
 
     
 
@@ -201,3 +201,7 @@ print("Muestras restantes:", sistema.secuencias)
 
 print("\n mutar_CAMBIO")
 print("MUTADAS:", sistema.mutar_CAMBIO("ATCGTA"))
+
+
+print("\n contar_patron_CAMBIO")
+print("PATRON:", sistema.contar_patron_CAMBIO("aTATat", "AT"))
