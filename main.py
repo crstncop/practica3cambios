@@ -156,6 +156,31 @@ class secuencias:
         return self.contar_patron_CAMBIO(secuencia, patron, i + 1)
 
     
+    def equilibrada(self, secuencia):
+
+        if len(secuencia) <= 1:
+            return True
+
+        cantidad_a = secuencia.count("A")
+        cantidad_t = secuencia.count("T")
+
+        diferencia = abs(cantidad_a - cantidad_t)
+
+        if diferencia > 1:
+            return False
+
+        mitad = len(secuencia) // 2
+
+        izquierda = secuencia[:mitad]
+        derecha = secuencia[mitad:]
+
+        resultado_izquierda = self.equilibrada(izquierda)
+        resultado_derecha = self.equilibrada(derecha)
+
+        return resultado_izquierda and resultado_derecha
+
+
+  
 
 sistema = secuencias()
 
@@ -205,3 +230,9 @@ print("MUTADAS:", sistema.mutar_CAMBIO("ATCGTA"))
 
 print("\n contar_patron_CAMBIO")
 print("PATRON:", sistema.contar_patron_CAMBIO("aTATat", "AT"))
+
+print("\n SECUENCIAS EQUILIBRADAS")
+print("ATAT:", sistema.equilibrada("ATAT"))    
+print("AATT:", sistema.equilibrada("AATT"))   
+print("A:", sistema.equilibrada("A"))          
+print("ATATA:", sistema.equilibrada("ATATA"))  
